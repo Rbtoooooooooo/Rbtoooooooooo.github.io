@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Robot Lean">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Mac下安装mysql及简单错误处理"/>
+  <meta property="og:title" content="hello"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="Rbtoooooooooo’s Blog"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Mac下安装mysql及简单错误处理</p>
+          <p class="title">hello</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -100,20 +100,12 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2016-12-03</span>
+            <span class="date">2017-05-12</span>
             <span class="time">19:07:36</span>
           </span>
           
         </div>
         <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
-
-<a class="tag" href="/tags/mysql/">#mysql</a>
-
-
-          </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
@@ -125,25 +117,25 @@
 <blockquote>
 <p>brew install mysql</p>
 </blockquote>
-<h3 id="3-然后就等着"><a href="#3-然后就等着" class="headerlink" title="3. 然后就等着"></a>3. 然后就等着</h3><p>看网速了，网速好，几分钟就下好了，网速差就多等会，下载好了后差不多就会如下图所示，注意 <strong><em>红框框</em></strong> 里面写的，就是下一步<br><img src="/install_mysql/mysql下载完成.png" alt="下载完成"></p>
+<h3 id="3-然后就等着"><a href="#3-然后就等着" class="headerlink" title="3. 然后就等着"></a>3. 然后就等着</h3><p>看网速了，网速好，几分钟就下好了，网速差就多等会，下载好了后差不多就会如下图所示，注意 <strong><em>红框框</em></strong> 里面写的，就是下一步<br><img src="/hello/mysql下载完成.png" alt="下载完成"></p>
 <h3 id="4-在终端输入mysql-secure-installation"><a href="#4-在终端输入mysql-secure-installation" class="headerlink" title="4. 在终端输入mysql_secure_installation"></a>4. 在终端输入mysql_secure_installation</h3><p>输入完msyql_secure_installation后，会让你做一些设置密码类的简单操作，密码最好由字母、符号和数字组成，不然好像系统会觉得你密码不够安全，会让你重输入，<strong><em>这个密码需要记住， 以后要用的</em></strong>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">luoputekiMacBook-Air:~ luopu$ mysql_secure_installation  </div><div class="line">Securing the MySQL server deployment.  </div><div class="line">Enter password for user root: # 输入密码</div><div class="line">The &apos;validate_password&apos; plugin is installed on the server.</div><div class="line">The subsequent steps will run with the existing configuration</div><div class="line">of the plugin.</div><div class="line">Using existing password for root.  </div><div class="line">Estimated strength of the password: 100</div><div class="line">Change the password for root ? ((Press y|Y for Yes, any other key for No) : n    # 选no就行了， 不用改，就是刚刚的密码  </div><div class="line">... skipping.</div><div class="line">By default, a MySQL installation has an anonymous user,</div><div class="line">allowing anyone to log into MySQL without having to have</div><div class="line">a user account created for them. This is intended only for</div><div class="line">testing, and to make the installation go a bit smoother.</div><div class="line">You should remove them before moving into a production</div><div class="line">environment.  </div><div class="line">Remove anonymous users? (Press y|Y for Yes, any other key for No) : y       # 移除匿名用户</div><div class="line">Success.  </div><div class="line">Normally, root should only be allowed to connect from</div><div class="line">&apos;localhost&apos;. This ensures that someone cannot guess at</div><div class="line">the root password from the network.  </div><div class="line">Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y   # 禁止远程登陆</div><div class="line">Success.  </div><div class="line">By default, MySQL comes with a database named &apos;test&apos; that</div><div class="line">anyone can access. This is also intended only for testing,</div><div class="line">and should be removed before moving into a production</div><div class="line">environment.  </div><div class="line">Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y      # 删除测试数据库</div><div class="line">- Dropping test database...</div><div class="line">Success.  </div><div class="line">- Removing privileges on test database...</div><div class="line">Success.  </div><div class="line">Reloading the privilege tables will ensure that all changes</div><div class="line">made so far will take effect immediately.  </div><div class="line">Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y     # 刷新一下</div><div class="line">Success.  </div><div class="line">All done!</div><div class="line">luoputekiMacBook-Air:~ luopu$</div></pre></td></tr></table></figure>
 <h3 id="5-搞定-进入mysql"><a href="#5-搞定-进入mysql" class="headerlink" title="5. 搞定 + 进入mysql"></a>5. 搞定 + 进入mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">luoputekiMacBook-Air:~ luopu$ mysql.server start  <span class="comment"># 启动mysql服务</span></div><div class="line">Starting MySQL</div><div class="line">. SUCCESS!</div><div class="line">luoputekiMacBook-Air:~ luopu$ mysql -uroot -p  <span class="comment"># 相当于你即将进入一个可执行sql语句的地方</span></div><div class="line">Enter password:  <span class="comment"># 输入之前设置的密码</span></div><div class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</div><div class="line">Your MySQL connection id is 2</div><div class="line">Server version: 5.7.16 Homebrew</div><div class="line">Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.</div><div class="line">Oracle is a registered trademark of Oracle Corporation and/or its</div><div class="line">affiliates. Other names may be trademarks of their respective</div><div class="line">owners.</div><div class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> help. Type <span class="string">'\c'</span> to clear the current input statement.</div><div class="line">mysql&gt; <span class="comment"># 此处可以输入sql语句，分号结尾， 回车执行</span></div></pre></td></tr></table></figure>
 <h3 id="6-简单错误处理"><a href="#6-简单错误处理" class="headerlink" title="6. 简单错误处理"></a>6. 简单错误处理</h3><ul>
-<li><h4 id="错误一"><a href="#错误一" class="headerlink" title="错误一"></a>错误一</h4><p>ERROR 2002 (HY000): Can’t connect to local MySQL server through socket ‘/tmp/mysql.sock’ (2)<br><img src="/install_mysql/错误一.png" alt="错误一"><br>这个是因为mysql.server 没启动， 输入以下命令，回车</p>
+<li><h4 id="错误一"><a href="#错误一" class="headerlink" title="错误一"></a>错误一</h4><p>ERROR 2002 (HY000): Can’t connect to local MySQL server through socket ‘/tmp/mysql.sock’ (2)<br><img src="/hello/错误一.png" alt="错误一"><br>这个是因为mysql.server 没启动， 输入以下命令，回车</p>
 <blockquote>
 <p>mysql.server start</p>
 </blockquote>
 </li>
-<li><h4 id="错误二"><a href="#错误二" class="headerlink" title="错误二"></a>错误二</h4><p>luoputekiMacBook-Air:~ luopu$ mysql -v<br>ERROR 1045 (28000): Access denied for user ‘luopu’@’localhost’ (using password: NO)<br><img src="/install_mysql/错误二.png" alt="错误二"><br>这个是因为’luopu’没有权限，mysql下有个超级用户’root’,可以使用root解决该错误。<strong>举例</strong>：将图片中的 <code>mysql -v</code> 改为 <code>mysql -uroot -p -v</code> 即可。  </p>
+<li><h4 id="错误二"><a href="#错误二" class="headerlink" title="错误二"></a>错误二</h4><p>luoputekiMacBook-Air:~ luopu$ mysql -v<br>ERROR 1045 (28000): Access denied for user ‘luopu’@’localhost’ (using password: NO)<br><img src="/hello/错误二.png" alt="错误二"><br>这个是因为’luopu’没有权限，mysql下有个超级用户’root’,可以使用root解决该错误。<strong>举例</strong>：将图片中的 <code>mysql -v</code> 改为 <code>mysql -uroot -p -v</code> 即可。  </p>
 </li>
-<li><h4 id="错误三"><a href="#错误三" class="headerlink" title="错误三"></a>错误三</h4><p>ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘rsion’ at line 1<br><img src="/install_mysql/错误二.png" alt="错误三"></p>
+<li><h4 id="错误三"><a href="#错误三" class="headerlink" title="错误三"></a>错误三</h4><p>ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘rsion’ at line 1<br><img src="/hello/错误二.png" alt="错误三"></p>
 <p>  在你写的sql语句中的<code>rsion</code>附近由语法错误。  </p>
 </li>
 </ul>
 <h3 id="7-推荐"><a href="#7-推荐" class="headerlink" title="7. 推荐"></a>7. 推荐</h3><p>慕课网mysql教程↗(^ω^)↗<a href="http://www.imooc.com/learn/122" target="_blank" rel="external">传送门走你</a></p>
 <hr>
-<div><br><h3 align="center"> 一分也是爱💩 </h3><br><img src="/install_mysql/微信收钱.png" width="250" height="250" align="left" alt="微信收钱"><br><img src="/install_mysql/支付宝收钱.png" width="250" height="250" align="right" alt="支付宝收钱"><br></div>
+<div><br><h3 align="center"> 一分也是爱💩 </h3><br><img src="/hello/微信收钱.png" width="250" height="250" align="left" alt="微信收钱"><br><img src="/hello/支付宝收钱.png" width="250" height="250" align="right" alt="支付宝收钱"><br></div>
 
         </div>
       </div>
