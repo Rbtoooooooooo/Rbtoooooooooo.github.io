@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Robot Lean">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="蓝桥杯——摆动序列"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Rbtoooooooooo’s Blog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Rbtoooooooooo’s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Rbtoooooooooo’s Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/leaf.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">蓝桥杯——摆动序列</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/rbtoooooooooo">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:darling_rbt@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Robot Lean</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-05-12</span>
+            <span class="time">17:11:16</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/蓝桥杯/">#蓝桥杯</a> <a class="tag" href="/tags/c/">#c++</a> <a class="tag" href="/tags/摆动序列/">#摆动序列</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="蓝桥杯-篇0：摆动序列"><a href="#蓝桥杯-篇0：摆动序列" class="headerlink" title="蓝桥杯 篇0：摆动序列"></a>蓝桥杯 篇0：摆动序列</h1><h2 id="问题如下"><a href="#问题如下" class="headerlink" title="问题如下"></a>问题如下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">问题描述</div><div class="line">　　如果一个序列满足下面的性质，我们就将它称为摆动序列：</div><div class="line">　　1. 序列中的所有数都是不大于k的正整数；</div><div class="line">　　2. 序列中至少有两个数。</div><div class="line">　　3. 序列中的数两两不相等；</div><div class="line">　　4. 如果第i – 1个数比第i – 2个数大，则第i个数比第i – 2个数小；</div><div class="line">      如果第i – 1个数比第i – 2个数小，则第i个数比第i – 2个数大。</div><div class="line">　　比如，当k = 3时，有下面几个这样的序列：</div><div class="line">　　1 2</div><div class="line">　　1 3</div><div class="line">　　2 1</div><div class="line">　　2 1 3</div><div class="line">　　2 3</div><div class="line">　　2 3 1</div><div class="line">　　3 1</div><div class="line">　　3 2</div><div class="line">　　一共有8种，给定k，请求出满足上面要求的序列的个数。</div><div class="line">输入格式</div><div class="line">　　输入包含了一个整数k。（k&lt;=20）</div><div class="line">输出格式</div><div class="line">　　输出一个整数，表示满足要求的序列个数。</div><div class="line">样例输入</div><div class="line">3</div><div class="line">样例输出</div><div class="line">8</div></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>分析题目中的<br><strong> 条件4.如果第i – 1个数比第i – 2个数大，则第i个数比第i – 2个数小；<br>如果第i – 1个数比第i – 2个数小，则第i个数比第i – 2个数大。 </strong><br>按i递增，曲线如下：</p>
+<p><img src="../_pictures/BlueBridge/0-0.png" alt="曲线"></p>
+<p>可以看出 <strong><em>后面的数比前面最大的数更大或者比最小的数更小</em></strong>，那我们可以<br>从第一个数和第二个数都等于1开始，记为1-1，序列个数为ans，很明显，这个不<br>满足条件，因为不能有相同的数，然后1-2，这个满足条件，<strong>但是1-k中没有哪个数能满足条件4成为第三个</strong>，因为后面的数都比1大，我们需要一<br>个比1小的数，然后轮到1-3，1-4，…，1-k，轮到2-1时，第三个数可以取3到k，<br>ans++，然后我们根据第二个数和第三个数去取第四个数，依次类推出剩下的情况<br>但是最一开始的1-2，1-3，1-4，5-4这中情况没有算进去，所以计算结果需要加上<br>k*k-k.<br>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> ans, k;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> l=<span class="number">1</span>; l&lt;=k; l++) &#123; <span class="comment">// 从1-k中取数</span></div><div class="line">        <span class="keyword">if</span> (i&lt;j) &#123;             <span class="comment">// 判断是否满足条件</span></div><div class="line">            <span class="keyword">if</span> (l&lt;i) &#123;</div><div class="line">                ans++;</div><div class="line">                f(j,l);         <span class="comment">// 去寻找下一个数</span></div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i&gt;j) &#123;      <span class="comment">// 判断是否满足条件</span></div><div class="line">            <span class="keyword">if</span> (l&gt;i) &#123;</div><div class="line">                ans++;</div><div class="line">                f(j, l);        <span class="comment">// 去寻找下一个</span></div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;k;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=k; i++) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=k; j++) &#123;</div><div class="line">            f(i, j);            <span class="comment">// 从1-1开始</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ans+=(k*k-k);               <span class="comment">// 加上k*k-k</span></div><div class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="love-is-over"><a href="#love-is-over" class="headerlink" title="love is over!!!"></a><em>love is over!!!</em></h2><h2 id="请原谅我突然地发神经，哇哈哈哈哈"><a href="#请原谅我突然地发神经，哇哈哈哈哈" class="headerlink" title="请原谅我突然地发神经，哇哈哈哈哈"></a>请原谅我突然地发神经，哇哈哈哈哈</h2><hr>
+<div><br><h3 align="center"> 一分也是爱💩 </h3><br><img src="../_pictures/money/wx.png" width="250" height="250" align="left" alt="微信收钱"><br><img src="../_pictures/money/alipay.png" width="250" height="250" align="right" alt="支付宝收钱"><br></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
