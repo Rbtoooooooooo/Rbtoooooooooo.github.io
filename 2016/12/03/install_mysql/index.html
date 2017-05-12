@@ -101,7 +101,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2016-12-03</span>
-            <span class="time">19:29:00</span>
+            <span class="time">19:38:38</span>
           </span>
           
         </div>
@@ -135,9 +135,9 @@
 <p>mysql.server start</p>
 </blockquote>
 </li>
-<li><h4 id="错误二"><a href="#错误二" class="headerlink" title="错误二"></a>错误二</h4><p>luoputekiMacBook-Air:~ luopu$ mysql -v<br>ERROR 1045 (28000): Access denied for user ‘luopu’@’localhost’ (using password: NO)<br><img src="/install_mysql/错误二.png" alt="错误二"><br>这个是因为’luopu’没有权限，mysql下有个超级用户’root’,可以使用root解决该错误。<strong>举例</strong>：将图片中的 <code>mysql -v</code> 改为 <code>mysql -uroot -p -v</code> 即可。  </p>
+<li><h4 id="错误二"><a href="#错误二" class="headerlink" title="错误二"></a>错误二</h4><p>luoputekiMacBook-Air:~ luopu$ mysql -v<br>ERROR 1045 (28000): Access denied for user ‘luopu’@’localhost’ (using password: NO)<br><img src="/install_mysql/错误二.png" alt=""><br>这个是因为’luopu’没有权限，mysql下有个超级用户’root’,可以使用root解决该错误。<strong>举例</strong>：将图片中的 <code>mysql -v</code> 改为 <code>mysql -uroot -p -v</code> 即可。  </p>
 </li>
-<li><h4 id="错误三"><a href="#错误三" class="headerlink" title="错误三"></a>错误三</h4><p>ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘rsion’ at line 1<br><img src="/install_mysql/错误二.png" alt="错误三"></p>
+<li><h4 id="错误三"><a href="#错误三" class="headerlink" title="错误三"></a>错误三</h4><p>ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘rsion’ at line 1<br><img src="/install_mysql/错误二.png" alt=""></p>
 <p>  在你写的sql语句中的<code>rsion</code>附近由语法错误。  </p>
 </li>
 </ul>
