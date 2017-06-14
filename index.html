@@ -150,6 +150,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-编译原理实验二：语法分析器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/14/编译原理实验二：语法分析器/">编译原理实验二：语法分析器</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/14/编译原理实验二：语法分析器/" class="archive-article-date">
+  	<time datetime="2017-06-14T03:15:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
+<p>借助于词法分析程序提供的分析结果，编写一个算符优先语法分析程序，程序能进行语法结构分析和错误检查，并产生相应的归约信息。</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>找到等式的右边</li>
+<li>转换为输入字符串</li>
+<li>对输入字符串进行分析，即<code>归约</code>、<code>移进</code>、<code>接受</code>这三个操作。</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by luopu on 2017/6/8.</div><div class="line"> */</div><div class="line"><span class="keyword">package</span> 编译原理实验二;</div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unused"</span>)</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> no=<span class="number">0</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] jilu=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>][<span class="number">10</span>];</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> index=<span class="number">0</span>;</div><div class="line">    <span class="keyword">static</span> String[] oper=&#123;</div><div class="line">    		<span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>,</div><div class="line">    		<span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>,</div><div class="line">    		<span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>,</div><div class="line">    		<span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>,</div><div class="line">    		<span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"="</span>, <span class="string">"&lt;"</span>, <span class="string">"e"</span>,</div><div class="line">    		<span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"e"</span>, <span class="string">"&gt;"</span>, <span class="string">"e"</span>, <span class="string">"&gt;"</span>,</div><div class="line">    		<span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"e"</span>, <span class="string">"&gt;"</span>, <span class="string">"e"</span>, <span class="string">"&gt;"</span>,</div><div class="line">    		<span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&lt;"</span>, <span class="string">"e"</span>, <span class="string">"&lt;"</span>, <span class="string">"="</span>&#125;;</div><div class="line">    <span class="keyword">static</span> Stack&lt;String&gt; stk = <span class="keyword">new</span> Stack&lt;String&gt;();</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> ans=<span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">contentsOf</span><span class="params">(Stack&lt;String&gt; stk)</span> </span>&#123;</div><div class="line">        String str=stk.toString();</div><div class="line">        str=str.replace(<span class="string">"["</span>, <span class="string">""</span>);</div><div class="line">        str=str.replace(<span class="string">"]"</span>, <span class="string">""</span>);</div><div class="line">        str=str.replace(<span class="string">","</span>, <span class="string">""</span>);</div><div class="line">        str=str.replace(<span class="string">" "</span>, <span class="string">""</span>);</div><div class="line">        <span class="keyword">return</span> str;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printStates</span><span class="params">(String str, String op)</span> </span>&#123;</div><div class="line">    	String current=str.substring(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">    	String rest=str.substring(<span class="number">1</span>, str.length());</div><div class="line">    	String action=<span class="string">"移进"</span>;</div><div class="line">    	<span class="keyword">if</span>(op==<span class="string">"&gt;"</span>) &#123;</div><div class="line">    		jilu[no][index++]=ans;</div><div class="line">    		action=<span class="string">"归约"</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">if</span>(op==<span class="string">"="</span>&amp;&amp;rest.length()==<span class="number">0</span>) &#123;</div><div class="line">    		action=<span class="string">"接受"</span>;</div><div class="line">    	&#125;</div><div class="line">    	System.out.printf(<span class="string">"%5d%10s%7s%10s%15s%5s\n"</span>, ans++,contentsOf(stk),op,current,rest,action);</div><div class="line">    	<span class="keyword">if</span>(action.equals(<span class="string">"接受"</span>)) &#123;</div><div class="line">    		System.out.print(<span class="string">"归约产生式步骤号为："</span>);</div><div class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; jilu[no][i]!=<span class="number">0</span>; i++) &#123;</div><div class="line">    			System.out.print(jilu[no][i]+<span class="string">" "</span>);</div><div class="line">    		&#125;</div><div class="line">    		index=<span class="number">0</span>;</div><div class="line">    		System.out.println(<span class="string">"\n"</span>);</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">numOf</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">    	<span class="keyword">switch</span>(str) &#123;</div><div class="line">    	<span class="keyword">case</span> <span class="string">"+"</span>: <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    	<span class="keyword">case</span> <span class="string">"-"</span>: <span class="keyword">return</span> <span class="number">1</span>;  </div><div class="line">    	<span class="keyword">case</span> <span class="string">"*"</span>: <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">    	<span class="keyword">case</span> <span class="string">"/"</span>: <span class="keyword">return</span> <span class="number">3</span>;</div><div class="line">    	<span class="keyword">case</span> <span class="string">"("</span>: <span class="keyword">return</span> <span class="number">4</span>;</div><div class="line">    	<span class="keyword">case</span> <span class="string">")"</span>: <span class="keyword">return</span> <span class="number">5</span>;</div><div class="line">    	<span class="keyword">case</span> <span class="string">"i"</span>: <span class="keyword">return</span> <span class="number">6</span>;</div><div class="line">    	<span class="keyword">case</span> <span class="string">"#"</span>: <span class="keyword">return</span> <span class="number">7</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> <span class="number">8</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">second</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">    	stk.clear();</div><div class="line">    	ans=<span class="number">1</span>;</div><div class="line">    	stk.push(<span class="string">"#"</span>);</div><div class="line">    	<span class="keyword">int</span> k=<span class="number">0</span>, r=<span class="number">0</span>, i=<span class="number">0</span>;</div><div class="line">    	String op=<span class="string">""</span>;</div><div class="line">    	<span class="keyword">for</span>(;;) &#123;</div><div class="line">    		<span class="comment">// 得到k， r的值</span></div><div class="line">    		<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</div><div class="line">    			k=numOf(stk.get(stk.size()-<span class="number">1</span>-i));</div><div class="line">    			<span class="keyword">if</span>(k!=<span class="number">8</span>) &#123;</div><div class="line">    				r=numOf(str.substring(<span class="number">0</span>, <span class="number">1</span>));</div><div class="line">    				<span class="keyword">break</span>;</div><div class="line">    			&#125;</div><div class="line">    		&#125;</div><div class="line"></div><div class="line">    		<span class="comment">// 得到优先关系符</span></div><div class="line">    		op=oper[k*<span class="number">8</span>+r];</div><div class="line"></div><div class="line">    		<span class="comment">// 归约? 移进？接受？</span></div><div class="line">    		<span class="keyword">if</span>(op.equals(<span class="string">"&gt;"</span>)) &#123;</div><div class="line">    			<span class="comment">// 归约</span></div><div class="line">    			printStates(str, op);</div><div class="line">    			<span class="keyword">for</span>(;i&gt;<span class="number">0</span>;i--) &#123;</div><div class="line">    				stk.pop();</div><div class="line">    			&#125;</div><div class="line">    			<span class="keyword">for</span>(;;) &#123;</div><div class="line">    				stk.pop();</div><div class="line">    				k=numOf(stk.lastElement());</div><div class="line">    				<span class="keyword">if</span>(k!=<span class="number">8</span>&amp;&amp;!oper[k*<span class="number">8</span>+r].equals(<span class="string">"e"</span>)) &#123;</div><div class="line">    					<span class="keyword">break</span>;</div><div class="line">    				&#125;</div><div class="line">    			&#125;</div><div class="line">    			stk.push(<span class="string">"N"</span>);</div><div class="line"></div><div class="line">    		&#125; <span class="keyword">else</span> &#123;</div><div class="line">    			<span class="comment">// 移进</span></div><div class="line">    			printStates(str, op);</div><div class="line">    			stk.push(str.substring(<span class="number">0</span>, <span class="number">1</span>));</div><div class="line">    			str=str.substring(<span class="number">1</span>, str.length());</div><div class="line"></div><div class="line">    			<span class="keyword">if</span>(op.equals(<span class="string">"="</span>)&amp;&amp;str.length()==<span class="number">0</span>) &#123;</div><div class="line">    				<span class="comment">// 接受</span></div><div class="line">    				<span class="keyword">break</span>;</div><div class="line">    			&#125;</div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">first</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">    	System.out.println(<span class="string">"算术表达式"</span>+(++no)+<span class="string">"为："</span>+str);</div><div class="line">    	<span class="keyword">try</span> &#123;</div><div class="line">    		<span class="keyword">int</span> a=Integer.parseInt(str);</div><div class="line">    		str=<span class="string">"i#"</span>;</div><div class="line">    	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">    		String newStr=<span class="string">""</span>;</div><div class="line">    		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</div><div class="line">    			<span class="keyword">if</span>(<span class="number">0</span>&lt;=(str.charAt(i)-<span class="string">'0'</span>)&amp;&amp;(str.charAt(i)-<span class="string">'0'</span>)&lt;=<span class="number">9</span>) &#123;</div><div class="line">                  newStr+=<span class="string">"i"</span>;</div><div class="line">              &#125; <span class="keyword">else</span> &#123;</div><div class="line">                  newStr+=str.charAt(i);</div><div class="line">              &#125;</div><div class="line">			&#125;</div><div class="line">    		str=newStr+<span class="string">"#"</span>;</div><div class="line">    	&#125;</div><div class="line">    	System.out.println(<span class="string">"转换为输入串："</span>+str);</div><div class="line">    	System.out.println(<span class="string">"步骤号    符号栈    优先关系	   当前分析符	剩余字符串  动作"</span>);</div><div class="line">    	second(str);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        String str=<span class="string">"b=100 101:a=2*(1+3) IF (b&gt;10) THEN a=1 ELSE IF(b&gt;=5) THEN a=2 ELSE GOTO 101"</span>;</div><div class="line">        String fenxiStr=<span class="string">""</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</div><div class="line">			<span class="keyword">if</span>(str.charAt(i)==<span class="string">'='</span>&amp;&amp;str.charAt(i-<span class="number">1</span>)!=<span class="string">'&gt;'</span>) &#123;</div><div class="line">				i++;</div><div class="line">				<span class="keyword">for</span>(;i&lt;str.length(); i++) &#123;</div><div class="line">					<span class="keyword">if</span>(str.charAt(i)!=<span class="string">' '</span>) &#123;</div><div class="line">						fenxiStr+=str.charAt(i);</div><div class="line">					&#125; <span class="keyword">else</span> &#123;</div><div class="line">						first(fenxiStr);</div><div class="line">						fenxiStr=<span class="string">""</span>;</div><div class="line">						<span class="keyword">break</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="/2017/06/14/编译原理实验二：语法分析器/result.jpeg" alt=""></p>
+<h2 id="PERFECT！！！"><a href="#PERFECT！！！" class="headerlink" title=" PERFECT！！！ "></a><strong><em> PERFECT！！！ </em></strong></h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编译原理</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">实验</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">语法分析器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/14/编译原理实验二：语法分析器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-蓝桥杯篇4-计算表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -418,6 +498,10 @@
 <td>男</td>
 </tr>
 <tr>
+<td>学校</td>
+<td>北方工业大学14级学生</td>
+</tr>
+<tr>
 <td>知乎</td>
 <td><a href="https://www.zhihu.com/people/rbtoooooooooo" target="_blank" rel="external">予欲无语的知乎主页</a></td>
 </tr>
@@ -431,12 +515,12 @@
 </tr>
 <tr>
 <td>LOL</td>
-<td>恕瑞玛ID: 1135370737 <br>诺克萨斯: 135370737<br>最近反正是喜欢打辅助</td>
+<td>恕瑞玛: 1135370737 <br>诺克萨斯: 135370737<br>最近反正是喜欢打辅助</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="暂时就这些-想到再更"><a href="#暂时就这些-想到再更" class="headerlink" title="暂时就这些 想到再更"></a>暂时就这些 想到再更</h2><h1 id="照骗！！！"><a href="#照骗！！！" class="headerlink" title="照骗！！！"></a><strong><em>照骗！！！</em></strong></h1><p><img src="/2017/05/22/自我简介/cool.jpeg" alt=""></p>
+<h2 id="暂时就这些-想到再更"><a href="#暂时就这些-想到再更" class="headerlink" title="暂时就这些 想到再更"></a>暂时就这些 想到再更</h2><h1 id="照骗！！！"><a href="#照骗！！！" class="headerlink" title=" 照骗！！！ "></a><strong><em> 照骗！！！ </em></strong></h1><p><img src="/2017/05/22/自我简介/cool.jpeg" alt=""></p>
 
       
 
@@ -879,6 +963,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">语法分析器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">自我简介</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">蓝桥杯</a>
               </li>
              
@@ -888,10 +980,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">递归</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">自我简介</a>
               </li>
              
               <li class="article-tag-list-item">
